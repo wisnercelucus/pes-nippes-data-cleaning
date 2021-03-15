@@ -1,0 +1,7 @@
+The environment was created with "conda". To launch it, create a new env "conda create env".
+
+Once the env is created activate it: conda activate env
+And run: conda install -r requirements.txt
+
+In that we use jupyter-lab not the classic jupyter-notebook. So call: "jupyter-lab"
+and start coding!
