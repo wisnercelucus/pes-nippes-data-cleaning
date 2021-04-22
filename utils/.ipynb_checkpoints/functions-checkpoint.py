@@ -21,6 +21,35 @@ def rename_col_values(df, col_name, values):
         col_renamed.append(values.get(v))
     return col_renamed
 
+
+def rename_col_with_multiple_values(df, col_name, values):
+    """
+    This method accepts a DataFrame, 
+    a column name from which we will rename the values 
+    (the column should be among the DataFrame column), and a dictionary of K, V pairs 
+    where K represents the keys, so that value tio be renamed and v are the new names.
+    Ex: df, col_name= "name", values = {'Pop':'Pope',
+                                        'Ro':'Roma',
+                                        }
+    rename_value(df, 'name', values)
+    It will return a list of the new values that we can use to replace the correct column in the DataFrame
+    """
+    col = df[col_name]
+    col_renamed = []
+    
+
+    for v in col:
+        if type(v) != str:
+            col_renamed.append(v)
+            continue
+        for k in values.keys():
+            if not k in v:
+                continue
+            v = v.replace(k, values[k])
+        col_renamed.append(v)
+    return col_renamed
+
+
 def count_freq_simple_answer(dframe, col_name):
     response_frequencies = {}
     col = dframe[col_name]

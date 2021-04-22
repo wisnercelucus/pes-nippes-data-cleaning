@@ -1,7 +1,23 @@
-The environment was created with "conda". To launch it, create a new env "conda create env".
+The environment was created with "conda". To launch it, create a new env "conda create --name env".
 
 Once the env is created activate it: conda activate env
-And run: conda install -r requirements.txt
+And run: conda install --file requirements.txt
 
 In that we use jupyter-lab not the classic jupyter-notebook. So call: "jupyter-lab"
 and start coding!
+
+
+Sole issue with new anaconda and conda 4.x installed:
+
+1) happen when creating a new venv with conda create -name <name>
+CondaHTTPError: HTTP 000 CONNECTION FAILED for url <https://repo.anaconda.com/pkgs/main/win-64/repodata.json>
+#10378
+
+Install the latest available binaries from the first recommendation (https://slproweb.com/products/Win32OpenSSL.html) on the OpenSSL wiki page (https://wiki.openssl.org/index.php/Binaries).
+
+2) install reuqirements with conda from a file: conda install --file <requirements.txt> (remove <...>)
+
+possible error: can't find packages from current channels:
+please use: conda config --append channels conda-forge
+
+and then re-run the installation command: it should work.
