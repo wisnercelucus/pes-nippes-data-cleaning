@@ -76,7 +76,14 @@ def count_freq_multiple_answer(dframe, col_name, patterns):
     return col_name_df
 
 
-
+def merge_match_size(df_1, df_2, key):
+    if df_1.shape[0] > df_2.shape[0]:
+        return df_1.merge(df_2, how='left', on=key).fillna(0)
+    elif df_1.shape[0] < df_2.shape[0]:
+        return df_2.merge(df_1, how='left', on=key).fillna(0)
+    else:
+        return df_1.merge(df_2, how='left', on=key)
+            
 def plot_g(sub):
     x = list(sub['response'])
     y = list(sub['frequency'])
