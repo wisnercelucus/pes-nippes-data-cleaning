@@ -83,7 +83,10 @@ def merge_match_size(df_1, df_2, key):
         return df_2.merge(df_1, how='left', on=key).fillna(0)
     else:
         return df_1.merge(df_2, how='left', on=key)
-            
+
+def get_percent(n, d):
+    return (n/d) * 100
+
 def plot_g(sub):
     x = list(sub['response'])
     y = list(sub['frequency'])
